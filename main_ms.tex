@@ -1,0 +1,183 @@
+% -*- coding:utf-8 -*-
+% AutoFakeBold和AutoFakeSlant是xeCJK宏包中的选项，开启伪粗体和伪斜体
+% 行距被设定为linespread=1.65，这是最接近word中1.5倍行距的效果
+\documentclass[a4paper,UTF8,twoside,zihao=-4,no-math,linespread=1.65,AutoFakeBold=1.8,AutoFakeSlant=true]{ctexrep}
+\normalsize	                  % 字号(因为在文档类选项里面指定了zihao=-4，所以默认小4号字)
+\setlength{\parskip}{0ex}     % 段落间的间距
+
+%---------加载宏包----------
+\usepackage{fontspec}	      % 设置英文字体
+\setmainfont{Times New Roman}
+\usepackage{amsmath}	      % 数学公式
+\usepackage{amssymb}	      % 数学符号
+\usepackage{amsthm}		      % 数学定理
+\usepackage[top=3.3cm,bottom=3.3cm,left=3.17cm,right=3.17cm,headsep=0.7cm,headheight=0.5cm,footskip=1.25cm]{geometry} % 页边距
+\usepackage{float}            % 调整浮动体可用“[H]”固定图表插入位置
+\usepackage{hvfloat}          % 调整浮动体可用于横置图表
+\usepackage{graphicx}	      % 插入图片
+\usepackage{adjustbox}        % 调整box环境
+\usepackage{tabu}             % 跨页长表格
+\usepackage{longtable}        % 跨页长表格
+\usepackage{booktabs}	      % 三线表
+\usepackage{multirow}	      % 合并单元格
+\usepackage{hyperref}	      % 链接宏包
+\hypersetup{hidelinks}        % 隐藏链接
+\usepackage[backend=biber,style=gb7714-2015,gbpub=false,gbalign=gb7714-2015]{biblatex} % 参考文献格式gb7714-2015
+%--------------修改对齐环境以使参考文献不悬挂缩进--------------
+\setlength{\biblabelsep}{2mm} % 顺序标签与文献内容的间距
+\renewcommand{\itemcmd}{%
+\addvspace{\bibitemsep}       % 恢复\bibitemsep的作用
+\mkgbnumlabel{\printfield{labelnumber}}%
+\hspace{\biblabelsep}}
+%------------------------------------------------------------
+\addbibresource{ref.bib}      % biblatex参考文献库
+
+%--------------------设置目录格式和引导点--------------------- 
+\usepackage{tocloft} 
+\renewcommand{\cftdotsep}{1}                  % 设置引导点间隔
+\setlength{\cftbeforetoctitleskip}{0pt}       % 目录标题前的空白设为0
+\setlength{\cftaftertoctitleskip}{0pt}        % 目录标题后的空白设为0
+\renewcommand{\contentsname}{目 \quad 录}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand\cfttoctitlefont{\heiti\zihao{-3}}
+\renewcommand\cftchapfont{\normalsize}
+\renewcommand\cftsecfont{\normalsize}
+\renewcommand\cftsubsecfont{\normalsize}
+\renewcommand\cftchappagefont{\normalsize}
+\renewcommand\cftsecpagefont{\normalsize}
+\renewcommand\cftsubsecpagefont{\normalsize}
+%\usepackage{tocbibind}   % 目录中加入参考文献(与biblatex不兼容)
+
+\usepackage[style=base,justification=centering,font=small]{caption}	% 更改标题要用到的宏包
+\DeclareCaptionLabelSeparator{nocolon}{~}							% 图编号与标题之间不带冒号
+\captionsetup{labelsep=nocolon}										% 图编号与标题之间不带冒号
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}				% 设置图标题的连接符是-
+\renewcommand{\thetable}{\thechapter-\arabic{table}}				% 设置表标题的连接符是-
+\renewcommand{\theequation}{\thechapter-\arabic{equation}}			% 设置公式编号的连接符是-
+\renewcommand{\footnotesize}{\small\selectfont}                     % 设置脚注字号为五号
+
+\usepackage{fancyhdr}        % 设置页眉页脚
+\fancypagestyle{plain}{%
+\fancyhf{}                   % 清空页眉页脚 
+\fancyfoot[C]{\thepage}      % 页脚为页码
+\cfoot{\zihao{-5}{\thepage}} % 页码字号小五
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+%---------设置各种间距-----------
+\setlength{\intextsep} {3.5ex plus 0.2ex minus 0.2ex}			    % 浮动体与文字之间的距离
+\setlength{\textfloatsep} {3.5ex plus 0.2ex minus 0.2ex}		    % 浮动体与页面顶部或者底部的距离
+\setlength{\floatsep} {3ex}										    % 两个浮动体之间的距离
+\setlength{\abovecaptionskip} {1ex plus 0.2ex minus 0.2ex }		    % 浮动体与标题之间的距离
+\setlength{\belowcaptionskip} {-1.0ex plus 0.2ex minus 0.2ex}
+
+%---------设置章节标题格式----------
+\ctexset{chapter={
+	number=\arabic{chapter},
+	format=\heiti\zihao{2}\centering,			% 2号黑体
+	beforeskip=3ex plus 0.3ex minus 0.3ex,		% 与正文内容的间距
+	afterskip=3ex plus 0.3ex minus 0.3ex,
+	fixskip=true,
+	name={}
+	},
+  section={
+	format=\heiti\zihao{3},			            % 3号黑体
+	beforeskip=1ex plus 0.1ex minus 0.1ex,		% 与正文内容的间距
+	afterskip=1ex plus 0.1ex minus 0.1ex,
+	},
+  subsection={
+	format=\heiti\zihao{4},						% 4号黑体
+	beforeskip=1ex plus 0.1ex minus 0.1ex,	    % 与正文内容的间距
+	afterskip=1ex plus 0.1ex minus 0.1ex,
+	},
+}
+
+%--------图的路径和大小---------
+\newcommand{\figpath}{../图}
+\newcommand{\figwidth}{13cm}
+\graphicspath{{figures/}}                       % 定义所有的图片文件在figures子目录下
+
+%----------文档信息-------------
+\newcommand\timu{论玄铁剑法在实战中的应用}
+\newcommand\zuozhe{杨过}
+\newcommand\xuehao{\textbf{1234567890}}
+\newcommand\daoshi{郭靖}
+\newcommand\daoshizhicheng{教授}
+\newcommand\zhuanye{武术研究}
+\newcommand\fangxiang{黯然销魂掌}
+\newcommand\riqi{1250年5月}
+
+\newcommand\yingwentimu{On the Application of Genteel Sword Technique in Practical Combat}
+\newcommand\yingwenzuozhe{Guo Yang}
+\newcommand\yingwenzhuanye{Martial Arts}
+\newcommand\yingwenfangxiang{An Ran Xiao Hun Zhang}
+\newcommand\yingwendaoshi{Jing Guo}
+\newcommand\yingwenzhicheng{Prof.}
+
+%----------开始正文----------------
+\begin{document}
+\songti			                 % 设定字体
+\abovedisplayskip 2ex			 % 设置公式与正文的间隔
+\belowdisplayskip 2ex
+\abovedisplayshortskip 2ex
+\belowdisplayshortskip 2ex
+
+\begin{titlepage}
+\input{chapters/title_ms}		 % 封面(盲审时可用title_anonymous)
+\input{chapters/confidential}	 % 保密声明
+\end{titlepage}
+
+\pagenumbering{arabic}			 % 开始页码，格式为阿拉伯数字
+\pagestyle{plain}				 % 不要页眉
+\input{chapters/abstract_zh.tex} % 中文摘要
+\input{chapters/abstract.tex}	 % 英文摘要
+\clearpage
+
+\begin{center}
+	\tableofcontents             % 生成目录
+\end{center}
+
+\clearpage
+%-----------------------设置页眉页脚-------------------------------					        
+\fancyhf{}\renewcommand*{\headrulewidth}{0.75bp}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[CO]{\small 中国地质大学（北京）硕士学位论文} % 奇数页页眉
+\fancyhead[CE]{\small \leftmark}					  % 偶数页页眉
+\fancyfoot[C]{\thepage}								  % 页脚为页码
+\cfoot{\zihao{-5}{\thepage}}                          % 页码字号小五
+%------------------使每章第一页也有页眉-----------------------------
+\fancypagestyle{plain}{                              
+  \pagestyle{fancy}}
+%------------------------------------------------------------------                 
+\pagenumbering{arabic}	                              % 开始页码，格式为阿拉伯数字
+\pagestyle{fancy}		                              % 开始页眉
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}      % 去掉页眉的章节标号							
+
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+%\input{chapters/chapter4}
+%\input{chapters/chapter5}
+
+\renewcommand*{\bibfont}{\small}
+\printbibliography[heading=bibintoc]                  % 插入参考文献 biblatex
+
+\chapter*{致谢}
+\addcontentsline{toc}{chapter}{致谢}
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+
+\appendix					    % 开始附录
+\input{chapters/appendixA}		% 附录A
+\input{chapters/CV}				% 简历
+\end{document}
