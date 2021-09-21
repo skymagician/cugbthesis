@@ -19,7 +19,7 @@
 \usepackage{tabu}             % 跨页长表格
 \usepackage{longtable}        % 跨页长表格
 \usepackage{booktabs}	      % 三线表
-\usepackage{multirow}	      % 合并单元格
+\usepackage{multirow}	      % 合并行单元格
 \usepackage{hyperref}	      % 链接宏包
 \hypersetup{hidelinks}        % 隐藏链接
 \usepackage[backend=biber,style=gb7714-2015,gbpub=false,gbalign=gb7714-2015]{biblatex} % 参考文献格式gb7714-2015
@@ -46,7 +46,6 @@
 \renewcommand\cftchappagefont{\normalsize}
 \renewcommand\cftsecpagefont{\normalsize}
 \renewcommand\cftsubsecpagefont{\normalsize}
-%\usepackage{tocbibind}   % 目录中加入参考文献(与biblatex不兼容)
 
 \usepackage[style=base,justification=centering,font=small]{caption}	% 更改标题要用到的宏包
 \DeclareCaptionLabelSeparator{nocolon}{~}							% 图编号与标题之间不带冒号
@@ -157,8 +156,6 @@
 \input{chapters/chapter1}
 \input{chapters/chapter2}
 \input{chapters/chapter3}
-%\input{chapters/chapter4}
-%\input{chapters/chapter5}
 
 \renewcommand*{\bibfont}{\small}
 \printbibliography[heading=bibintoc]                  % 插入参考文献 biblatex
