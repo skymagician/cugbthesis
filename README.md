@@ -1,6 +1,6 @@
 # cugbthesis
 
-LaTeX template for Master/Ph.D. thesis of China University of Geosciences, Beijing.
+A LaTeX template for Master/Ph.D. theses of China University of Geosciences, Beijing.
 
 中国地质大学（北京）硕/博毕业论文 LaTeX 模板。
 
@@ -9,4 +9,4 @@ LaTeX template for Master/Ph.D. thesis of China University of Geosciences, Beiji
 编译环境：TeX Live 2021
 
 编译顺序：xelatex -> biber -> xelatex -> xelatex
-或者 latexmk -xelatex
+或者 latexmk -> xelatex
