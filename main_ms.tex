@@ -23,6 +23,8 @@
 \usepackage{hyperref}	      % 链接宏包
 \hypersetup{hidelinks}        % 隐藏链接
 \usepackage[backend=biber,style=gb7714-2015,gbpub=false,gbalign=gb7714-2015]{biblatex} % 参考文献格式gb7714-2015
+\usepackage{lipsum}		      % 乱数假文
+\usepackage{zhlipsum}	      % 中文乱数假文
 %--------------修改对齐环境以使参考文献不悬挂缩进--------------
 \setlength{\biblabelsep}{2mm} % 顺序标签与文献内容的间距
 \renewcommand{\itemcmd}{%
@@ -122,8 +124,8 @@
 \belowdisplayshortskip 2ex
 
 \begin{titlepage}
-\input{chapters/title_ms}		 % 封面(盲审时可用title_anonymous)
-\input{chapters/confidential}	 % 保密声明
+	\input{chapters/title_ms}		 % 封面(盲审时可用title_anonymous)
+	\input{chapters/confidential}	 % 保密声明
 \end{titlepage}
 
 \pagenumbering{arabic}			 % 开始页码，格式为阿拉伯数字
@@ -146,8 +148,8 @@
 \fancyfoot[C]{\thepage}								  % 页脚为页码
 \cfoot{\zihao{-5}{\thepage}}                          % 页码字号小五
 %------------------使每章第一页也有页眉-----------------------------
-\fancypagestyle{plain}{                              
-  \pagestyle{fancy}}
+\fancypagestyle{plain}{
+	\pagestyle{fancy}}
 %------------------------------------------------------------------                 
 \pagenumbering{arabic}	                              % 开始页码，格式为阿拉伯数字
 \pagestyle{fancy}		                              % 开始页眉
@@ -161,18 +163,9 @@
 \printbibliography[heading=bibintoc]                  % 插入参考文献 biblatex
 
 \chapter*{致谢}
+\chaptermark{致谢}
 \addcontentsline{toc}{chapter}{致谢}
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
-致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢致谢。
+\zhlipsum[6-10]
 
 \appendix					    % 开始附录
 \input{chapters/appendixA}		% 附录A
